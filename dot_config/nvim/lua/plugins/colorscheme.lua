@@ -10,6 +10,15 @@ return {
     terminalColors = true,
     theme = "dragon",      -- "wave" | "dragon" | "lotus"
     background = { dark = "dragon", light = "dragon" },
+    colors = {
+      theme = {
+        all = {
+          ui = {
+            bg_gutter = "none",  
+          },
+        },
+      },
+    },
   },
   config = function(_, opts)
     require("kanagawa").setup(opts)

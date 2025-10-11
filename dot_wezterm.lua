@@ -13,9 +13,15 @@ return {
   -- 見た目
   font = wezterm.font("BitstromWera Nerd Font"),
   font_size = 12.0,
-  color_scheme = "Tokyo Night Storm",
-  window_background_opacity = 0.9,
+  color_scheme = "Kanagawa (dragon)",
+  window_background_opacity = 0.8,
   text_background_opacity = 0.8,
+  colors = {
+    background = "#16161D",
+    cursor_bg = "#DCD7BA",     -- ほんのり黄みがかったクリーム
+    cursor_fg = "#1F1F28",     -- カーソル上の文字を暗めで反転させる
+    cursor_border = "#DCD7BA", -- 枠線も同じ色で自然に
+  },
 
   -- ショートカット
   keys = {
