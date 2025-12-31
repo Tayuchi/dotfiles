@@ -16,7 +16,7 @@ return {
   window_background_opacity = 0.8,
   text_background_opacity = 0.8,
   colors = {
-    background = "#16161D",
+    background = "#000000", -- 透明背景
     cursor_bg = "#DCD7BA",     -- ほんのり黄みがかったクリーム
     cursor_fg = "#1F1F28",     -- カーソル上の文字を暗めで反転させる
     cursor_border = "#DCD7BA", -- 枠線も同じ色で自然に
