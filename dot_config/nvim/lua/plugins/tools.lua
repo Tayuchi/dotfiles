@@ -13,7 +13,7 @@ return {
           -- LSP
           "gopls",
           -- Formatter
-          "goimports", "gofumpt", "golines",
+          "goimports", "gofumpt", "golines", "stylua", "prettier",
           -- Linter
           "golangci-lint",
           -- Debugger

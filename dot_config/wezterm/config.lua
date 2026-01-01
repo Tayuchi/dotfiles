@@ -43,6 +43,12 @@ config.keys = {
 
   -- ペインを閉じる
   { key = 'w', mods = 'CMD', action = act.CloseCurrentPane { confirm = true } }, -- Cmd+W: ペインを閉じる
+
+    -- ペイン間の移動
+    { key = 'h', mods = 'CMD', action = act.ActivatePaneDirection 'Left' }, -- Cmd+H: 左のペインへ移動
+    { key = 'l', mods = 'CMD', action = act.ActivatePaneDirection 'Right' }, -- Cmd+L: 右のペインへ移動
+    { key = 'k', mods = 'CMD', action = act.ActivatePaneDirection 'Up' }, -- Cmd+K: 上のペインへ移動
+    { key = 'j', mods = 'CMD', action = act.ActivatePaneDirection 'Down' }, -- Cmd+J: 下のペインへ移動
 }
 
 return config
