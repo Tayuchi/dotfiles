@@ -24,17 +24,68 @@ config.font = wezterm.font("BitstromWera Nerd Font")
 config.font_size = 12.0
 config.color_scheme = "Kanagawa (dragon)"
 
-config.macos_window_background_blur = 10
+--  ウィンドウの外観設定
+config.macos_window_background_blur = 20
 config.window_background_opacity = 0.9
-config.text_background_opacity = 0.5
-config.colors = {
-	background = "#181616", -- 温かみのある暗色
-	foreground = "#DCD7BA", -- テキスト色（クリーム系）
-	cursor_bg = "#DCD7BA", -- ほんのり黄みがかったクリーム
-	cursor_fg = "#1F1F28", -- カーソル上の文字を暗めで反転させる
-	cursor_border = "#DCD7BA", -- 枠線も同じ色で自然に
+-- config.text_background_opacity = 0.9
+config.window_padding = {
+	left = 20,
+	right = 20,
+	top = 20,
+	bottom = 20,
 }
 
+-- Tabバーの設定
+config.show_new_tab_button_in_tab_bar = false
+config.show_close_tab_button_in_tabs = false
+config.use_fancy_tab_bar = false
+config.tab_bar_at_bottom = true
+
+-- タブのタイトルフォーマットをカスタマイズ
+wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
+	local title = tab.active_pane.title
+	if title == "" then
+		title = tab.active_pane.foreground_process_name
+	end
+	return string.format(" %d %s ", tab.tab_index + 1, title)
+end)
+
+-- カラー設定
+local warm_dark_color = "#181616" -- 温かみのある暗色
+local white_cream_color = "#DCD7BA" -- テキスト色（クリーム系）
+local light_gray_color = "#727169" -- 薄い灰色
+
+config.colors = {
+	background = warm_dark_color,
+	foreground = white_cream_color,
+	cursor_bg = white_cream_color,
+	cursor_fg = warm_dark_color,
+	cursor_border = white_cream_color,
+	tab_bar = {
+		background = warm_dark_color,
+		active_tab = {
+			bg_color = warm_dark_color,
+			fg_color = white_cream_color,
+			intensity = "Bold",
+		},
+		inactive_tab = {
+			bg_color = warm_dark_color,
+			fg_color = light_gray_color,
+		},
+		inactive_tab_hover = {
+			bg_color = "#1F1F28",
+			fg_color = white_cream_color,
+		},
+		new_tab = {
+			bg_color = warm_dark_color,
+			fg_color = light_gray_color,
+		},
+		new_tab_hover = {
+			bg_color = "#1F1F28",
+			fg_color = white_cream_color,
+		},
+	},
+}
 --------------------------------------------------------------------------------
 -- キーバインド
 --------------------------------------------------------------------------------

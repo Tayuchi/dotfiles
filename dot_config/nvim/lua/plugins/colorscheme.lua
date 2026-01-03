@@ -5,7 +5,7 @@ return {
   priority = 1000,       -- いちばん最初に
   opts = {
     compile = false,     -- 速さ重視なら true でもOK（~/.cache に生成）
-    transparent = false, -- 透過したいなら true
+    transparent = true, -- 透過したいなら true
     dimInactive = false, -- 非アクティブウィンドウを暗くする
     terminalColors = true,
     theme = "dragon",      -- "wave" | "dragon" | "lotus"
