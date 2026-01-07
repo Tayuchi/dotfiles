@@ -6,7 +6,7 @@ return {
 			lua = { "stylua" },
 			javascript = { "prettier" },
 			typescript = { "prettier" },
-			go = { "gofumpt", "goimports", "golines" },
+			go = { "gofumpt", "goimports" },
 		},
 		format_on_save = function(bufnr)
 			local disabled = vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat
