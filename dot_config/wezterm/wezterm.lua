@@ -38,17 +38,17 @@ config.window_padding = {
 -- Tabバーの設定
 config.show_new_tab_button_in_tab_bar = false
 config.show_close_tab_button_in_tabs = false
-config.use_fancy_tab_bar = false
-config.tab_bar_at_bottom = true
+-- config.use_fancy_tab_bar = false
+-- config.tab_bar_at_bottom = true
 
 -- タブのタイトルフォーマットをカスタマイズ
-wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
-	local title = tab.active_pane.title
-	if title == "" then
-		title = tab.active_pane.foreground_process_name
-	end
-	return string.format(" %d %s ", tab.tab_index + 1, title)
-end)
+-- wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
+-- 	local title = tab.active_pane.title
+-- 	if title == "" then
+-- 		title = tab.active_pane.foreground_process_name
+-- 	end
+-- 	return string.format(" %d %s ", tab.tab_index + 1, title)
+-- end)
 
 -- カラー設定
 local warm_dark_color = "#181616" -- 温かみのある暗色
@@ -62,28 +62,28 @@ config.colors = {
 	cursor_fg = warm_dark_color,
 	cursor_border = white_cream_color,
 	tab_bar = {
-		background = warm_dark_color,
-		active_tab = {
-			bg_color = warm_dark_color,
-			fg_color = white_cream_color,
-			intensity = "Bold",
-		},
-		inactive_tab = {
-			bg_color = warm_dark_color,
-			fg_color = light_gray_color,
-		},
-		inactive_tab_hover = {
-			bg_color = "#1F1F28",
-			fg_color = white_cream_color,
-		},
-		new_tab = {
-			bg_color = warm_dark_color,
-			fg_color = light_gray_color,
-		},
-		new_tab_hover = {
-			bg_color = "#1F1F28",
-			fg_color = white_cream_color,
-		},
+		-- background = warm_dark_color,
+		-- active_tab = {
+		-- 	bg_color = warm_dark_color,
+		-- 	fg_color = white_cream_color,
+		-- 	intensity = "Bold",
+		-- },
+		-- inactive_tab = {
+		-- 	bg_color = warm_dark_color,
+		-- 	fg_color = light_gray_color,
+		-- },
+		-- inactive_tab_hover = {
+		-- 	bg_color = "#1F1F28",
+		-- 	fg_color = white_cream_color,
+		-- },
+		-- new_tab = {
+		-- 	bg_color = warm_dark_color,
+		-- 	fg_color = light_gray_color,
+		-- },
+		-- new_tab_hover = {
+		-- 	bg_color = "#1F1F28",
+		-- 	fg_color = white_cream_color,
+		-- },
 	},
 }
 --------------------------------------------------------------------------------
