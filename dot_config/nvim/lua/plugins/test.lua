@@ -3,21 +3,37 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
     "antoinemadec/FixCursorHold.nvim",
-    -- どちらか片方を選ぶ
-    "nvim-neotest/neotest-go",       -- シンプル構成
-    -- "fredrikaverpil/neotest-golang", -- 高機能アダプタ
+    "nvim-treesitter/nvim-treesitter",
+    "fredrikaverpil/neotest-golang",
   },
   config = function()
-    local adapters = {}
-    if pcall(require, "neotest-go") then
-      table.insert(adapters, require("neotest-go"))
-    elseif pcall(require, "neotest-golang") then
-      table.insert(adapters, require("neotest-golang"))
-    end
-    require("neotest").setup({ adapters = adapters })
-    -- キーマップ
-    vim.keymap.set("n", "<leader>tn", function() require("neotest").run.run() end, { desc = "Nearest test" })
-    vim.keymap.set("n", "<leader>tf", function() require("neotest").run.run(vim.fn.expand("%")) end, { desc = "Test file" })
-    vim.keymap.set("n", "<leader>to", function() require("neotest").output.open({ enter = true }) end, { desc = "Test output" })
+    require("neotest").setup({
+      adapters = {
+        require("neotest-golang")({
+          go_test_args = {
+            "-v",
+            "-race",
+            "-count=1",
+            "-timeout=60s",
+          },
+          dap_go_enabled = true,
+          -- テスト検出の設定
+          testify_enabled = true,
+          warn_test_name_dupes = false,
+          warn_test_not_executed = false,
+        }),
+      },
+      discovery = {
+        enabled = true,
+        concurrent = 1,
+      },
+      diagnostic = {
+        enabled = true,
+      },
+      status = {
+        virtual_text = true,
+        signs = true,
+      },
+    })
   end,
 }
