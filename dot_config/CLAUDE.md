@@ -38,6 +38,7 @@ nvim/
 │       ├── copilot.lua        # GitHub Copilot
 │       ├── copilot-chat.lua   # Copilot Chat
 │       ├── copilot-cmp.lua    # Copilot補完統合
+│       ├── diffview.lua       # Git差分ビューア
 │       ├── nvim-tree.lua      # ファイルエクスプローラー
 │       ├── lualine.lua        # ステータスライン
 │       ├── colorscheme.lua    # カラースキーム
@@ -86,6 +87,7 @@ nvim/
 | conform.nvim | フォーマッター |
 | nvim-lint | リンター |
 | nvim-dap | デバッガー |
+| diffview.nvim | Git差分ビューア |
 
 ### プラグインの追加方法
 

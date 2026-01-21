@@ -109,3 +109,11 @@ map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "lsp code action" })
 map("n", "gd", vim.lsp.buf.definition, { desc = "lsp goto definition" })
 
 
+--------------------------------------------------------------------------------
+-- diffview
+--------------------------------------------------------------------------------
+map("n", "<leader>gd", "<cmd>DiffviewOpen<cr>", { desc = "Diffview Open" })
+map("n", "<leader>gD", "<cmd>DiffviewClose<cr>", { desc = "Diffview Close" })
+map("n", "<leader>gh", "<cmd>DiffviewFileHistory %<cr>", { desc = "File History" })
+
+
