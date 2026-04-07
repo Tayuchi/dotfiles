@@ -24,6 +24,7 @@ config.font_size = 12.0
 config.color_scheme = "Kanagawa (dragon)"
 
 --  ウィンドウの外観設定
+config.window_decorations = "RESIZE"
 config.macos_window_background_blur = 20
 config.window_background_opacity = 0.9
 -- config.text_background_opacity = 0.9
@@ -35,7 +36,7 @@ config.window_padding = {
 }
 
 -- Tabバーの設定
-config.show_new_tab_button_in_tab_bar = false
+config.show_new_tab_button_in_tab_bar = true
 config.show_close_tab_button_in_tabs = false
 -- config.use_fancy_tab_bar = false
 -- config.tab_bar_at_bottom = true
