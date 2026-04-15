@@ -3,9 +3,10 @@ local config = wezterm.config_builder()
 local act = wezterm.action
 local mux = wezterm.mux
 
--- 起動時のウィンドウサイズと位置
+-- 起動時のウィンドウを最大化
 wezterm.on("gui-startup", function(cmd)
-	mux.spawn_window(cmd or { width = 200, height = 55 })
+	local _, _, window = mux.spawn_window(cmd or {})
+	window:gui_window():maximize()
 end)
 
 --------------------------------------------------------------------------------
