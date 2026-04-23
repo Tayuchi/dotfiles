@@ -3,15 +3,25 @@ local config = wezterm.config_builder()
 local act = wezterm.action
 local mux = wezterm.mux
 
--- 起動時のウィンドウを最大化
+-- 起動時のウィンドウを画面の90%サイズで中央に表示
 wezterm.on("gui-startup", function(cmd)
+	local screen = wezterm.gui.screens().active
+	local width = screen.width * 0.9
+	local height = screen.height * 0.8
 	local _, _, window = mux.spawn_window(cmd or {})
-	window:gui_window():maximize()
+	window:gui_window():set_position(
+		(screen.width - width) / 2,
+		(screen.height - height) / 2
+	)
+	window:gui_window():set_inner_size(width, height)
 end)
 
 --------------------------------------------------------------------------------
 -- 基本設定
 --------------------------------------------------------------------------------
+-- macOSネイティブのフルスクリーン（デフォルト: false）
+config.native_macos_fullscreen_mode = true  
+
 -- 自動リロード設定
 config.automatically_reload_config = true
 
@@ -22,12 +32,16 @@ config.send_composed_key_when_right_alt_is_pressed = false
 -- フォントとカラースキームの設定
 config.font = wezterm.font("BitstromWera Nerd Font")
 config.font_size = 12.0
+config.window_frame = {
+	font = config.font,
+	font_size = 14.0,
+}
 config.color_scheme = "Kanagawa (dragon)"
 
 --  ウィンドウの外観設定
 config.window_decorations = "RESIZE"
 config.macos_window_background_blur = 20
-config.window_background_opacity = 0.9
+config.window_background_opacity = 0.8
 -- config.text_background_opacity = 0.9
 config.window_padding = {
 	left = 20,
@@ -39,17 +53,17 @@ config.window_padding = {
 -- Tabバーの設定
 config.show_new_tab_button_in_tab_bar = true
 config.show_close_tab_button_in_tabs = false
--- config.use_fancy_tab_bar = false
--- config.tab_bar_at_bottom = true
+config.use_fancy_tab_bar = false
+config.tab_bar_at_bottom = true
 
 -- タブのタイトルフォーマットをカスタマイズ
--- wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
--- 	local title = tab.active_pane.title
--- 	if title == "" then
--- 		title = tab.active_pane.foreground_process_name
--- 	end
--- 	return string.format(" %d %s ", tab.tab_index + 1, title)
--- end)
+wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
+	local title = tab.active_pane.title
+	if title == "" then
+		title = tab.active_pane.foreground_process_name
+	end
+	return string.format("  %d %s  ", tab.tab_index + 1, title)
+end)
 
 -- カラー設定
 local warm_dark_color = "#181616" -- 温かみのある暗色
@@ -63,28 +77,28 @@ config.colors = {
 	cursor_fg = warm_dark_color,
 	cursor_border = white_cream_color,
 	tab_bar = {
-		-- background = warm_dark_color,
-		-- active_tab = {
-		-- 	bg_color = warm_dark_color,
-		-- 	fg_color = white_cream_color,
-		-- 	intensity = "Bold",
-		-- },
-		-- inactive_tab = {
-		-- 	bg_color = warm_dark_color,
-		-- 	fg_color = light_gray_color,
-		-- },
-		-- inactive_tab_hover = {
-		-- 	bg_color = "#1F1F28",
-		-- 	fg_color = white_cream_color,
-		-- },
-		-- new_tab = {
-		-- 	bg_color = warm_dark_color,
-		-- 	fg_color = light_gray_color,
-		-- },
-		-- new_tab_hover = {
-		-- 	bg_color = "#1F1F28",
-		-- 	fg_color = white_cream_color,
-		-- },
+		background = warm_dark_color,
+		active_tab = {
+			bg_color = warm_dark_color,
+			fg_color = white_cream_color,
+			intensity = "Bold",
+		},
+		inactive_tab = {
+			bg_color = warm_dark_color,
+			fg_color = light_gray_color,
+		},
+		inactive_tab_hover = {
+			bg_color = "#1F1F28",
+			fg_color = white_cream_color,
+		},
+		new_tab = {
+			bg_color = warm_dark_color,
+			fg_color = light_gray_color,
+		},
+		new_tab_hover = {
+			bg_color = "#1F1F28",
+			fg_color = white_cream_color,
+		},
 	},
 }
 --------------------------------------------------------------------------------
